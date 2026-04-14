@@ -30,12 +30,12 @@ function PlaceholderPage({ title, description }) {
   return (
     <div className="flex items-center justify-center min-h-[60vh]">
       <div className="text-center animate-fade-in">
-        <div className="w-16 h-16 rounded-2xl glass flex items-center justify-center mx-auto mb-4">
-          <Zap size={28} className="text-emerald-400" />
+        <div className="w-16 h-16 rounded-2xl card flex items-center justify-center mx-auto mb-4">
+          <Zap size={28} className="text-emerald-500" />
         </div>
-        <h2 className="text-xl font-semibold mb-2">{title}</h2>
-        <p className="text-sm text-white/30 max-w-sm">{description}</p>
-        <div className="mt-6 inline-flex items-center gap-2 px-4 py-2 rounded-xl glass text-xs text-white/40">
+        <h2 className="text-xl font-semibold text-slate-800 mb-2">{title}</h2>
+        <p className="text-sm text-slate-400 max-w-sm">{description}</p>
+        <div className="mt-6 inline-flex items-center gap-2 px-4 py-2 rounded-xl card text-xs text-slate-400">
           <div className="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse" />
           Under utveckling
         </div>
@@ -61,18 +61,7 @@ export default function App() {
   const currentCompany = companies.find(c => c.id === activeCompany)
 
   return (
-    <div className="min-h-screen bg-navy-950">
-      {/* Background grain */}
-      <div className="fixed inset-0 opacity-[0.015] pointer-events-none"
-        style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E")`,
-        }}
-      />
-
-      {/* Ambient glow */}
-      <div className="fixed top-0 left-1/3 w-[600px] h-[600px] bg-emerald-500/[0.03] rounded-full blur-[120px] pointer-events-none" />
-      <div className="fixed bottom-0 right-1/4 w-[500px] h-[500px] bg-blue-500/[0.03] rounded-full blur-[120px] pointer-events-none" />
-
+    <div className="min-h-screen bg-[#f8fafc]">
       <Sidebar
         activeCompany={activeCompany}
         setActiveCompany={setActiveCompany}
@@ -80,10 +69,9 @@ export default function App() {
         setActivePage={setActivePage}
       />
 
-      {/* Main content */}
       <main className="lg:ml-[260px] min-h-screen">
         {/* Top bar */}
-        <header className="sticky top-0 z-30 px-6 py-4 flex items-center justify-between border-b border-white/[0.04] bg-navy-950/80 backdrop-blur-xl">
+        <header className="sticky top-0 z-30 px-6 py-3.5 flex items-center justify-between border-b border-slate-200 bg-white/90 backdrop-blur-xl">
           <div className="ml-10 lg:ml-0">
             <div className="flex items-center gap-2">
               {activeCompany !== 'all' && (
@@ -92,30 +80,30 @@ export default function App() {
                   style={{ background: currentCompany?.color }}
                 />
               )}
-              <h2 className="text-base font-semibold">
+              <h2 className="text-sm font-semibold text-slate-800">
                 {activePage === 'dashboard' ? 'Portfolio Dashboard' : pages[activePage]?.title || 'Dashboard'}
               </h2>
             </div>
-            <p className="text-[11px] text-white/25 mt-0.5">
+            <p className="text-[11px] text-slate-400 mt-0.5">
               {activeCompany === 'all'
                 ? 'Översikt alla bolag · Realtid'
                 : `${currentCompany?.name} · ${currentCompany?.description}`
               }
             </p>
           </div>
-          <div className="flex items-center gap-3">
-            <div className="hidden sm:flex items-center gap-2 px-3 py-2 rounded-xl glass">
-              <Search size={14} className="text-white/25" />
+          <div className="flex items-center gap-2">
+            <div className="hidden sm:flex items-center gap-2 px-3 py-2 rounded-xl bg-slate-100 border border-slate-200">
+              <Search size={13} className="text-slate-400" />
               <input
                 type="text"
                 placeholder="Sök patienter, bokningar..."
-                className="bg-transparent border-none outline-none text-xs text-white/60 placeholder:text-white/20 w-48"
+                className="bg-transparent border-none outline-none text-xs text-slate-600 placeholder:text-slate-400 w-44"
               />
-              <kbd className="text-[9px] text-white/15 border border-white/10 rounded px-1.5 py-0.5">⌘K</kbd>
+              <kbd className="text-[9px] text-slate-400 border border-slate-300 rounded px-1.5 py-0.5 font-medium">K</kbd>
             </div>
-            <div className="flex items-center gap-1.5 px-3 py-2 rounded-xl glass">
-              <div className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-              <span className="text-[11px] text-white/40 font-medium">Live</span>
+            <div className="flex items-center gap-1.5 px-3 py-2 rounded-xl bg-emerald-50 border border-emerald-100">
+              <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+              <span className="text-[11px] text-emerald-700 font-medium">Live</span>
             </div>
           </div>
         </header>
@@ -125,24 +113,24 @@ export default function App() {
           {activePage === 'patients' ? (
             <PatientsPage />
           ) : activePage === 'dashboard' ? (
-            <div className="space-y-6">
+            <div className="space-y-5">
               {/* Quick company pills */}
               {activeCompany === 'all' && (
-                <div className="flex items-center gap-2 animate-fade-in">
+                <div className="flex items-center gap-2 animate-fade-in flex-wrap">
                   {companies.filter(c => c.id !== 'all').map(c => (
                     <button
                       key={c.id}
                       onClick={() => setActiveCompany(c.id)}
-                      className="flex items-center gap-2 px-3 py-2 rounded-xl glass hover:bg-white/[0.06] transition-all group"
+                      className="flex items-center gap-2 px-3 py-2 rounded-xl card card-hover transition-all group"
                     >
                       <div
-                        className="w-5 h-5 rounded-md flex items-center justify-center text-[10px]"
+                        className="w-5 h-5 rounded-md flex items-center justify-center text-[9px] font-bold"
                         style={{ background: `${c.color}15`, color: c.color }}
                       >
                         {c.icon}
                       </div>
-                      <span className="text-[11px] font-medium text-white/50 group-hover:text-white/70">{c.name}</span>
-                      <ArrowUpRight size={10} className="text-white/20 group-hover:text-white/40" />
+                      <span className="text-[12px] font-medium text-slate-600 group-hover:text-slate-800">{c.name}</span>
+                      <ArrowUpRight size={11} className="text-slate-300 group-hover:text-slate-500" />
                     </button>
                   ))}
                 </div>
@@ -150,17 +138,17 @@ export default function App() {
 
               {/* Investor highlight bar */}
               {activeCompany === 'all' && (
-                <div className="glass rounded-2xl p-4 flex items-center justify-between animate-slide-up border border-emerald-500/10">
+                <div className="rounded-2xl p-4 flex items-center justify-between animate-slide-up border border-emerald-200 bg-emerald-50">
                   <div className="flex items-center gap-3">
-                    <div className="p-2 rounded-xl bg-emerald-500/10">
-                      <Building2 size={18} className="text-emerald-400" />
+                    <div className="p-2 rounded-xl bg-emerald-100">
+                      <Building2 size={18} className="text-emerald-600" />
                     </div>
                     <div>
-                      <h3 className="text-xs font-semibold">Portföljöversikt — Kapitalrunda</h3>
-                      <p className="text-[10px] text-white/30 mt-0.5">3 bolag · 64 anställda · 14 månaders runway · 18.3% MoM tillväxt</p>
+                      <h3 className="text-xs font-semibold text-slate-800">Portföljöversikt — Kapitalrunda</h3>
+                      <p className="text-[10px] text-slate-500 mt-0.5">3 bolag · 64 anställda · 14 månaders runway · 18.3% MoM tillväxt</p>
                     </div>
                   </div>
-                  <button className="px-4 py-2 rounded-xl bg-emerald-500/15 text-emerald-400 text-[11px] font-semibold hover:bg-emerald-500/25 transition-colors">
+                  <button className="px-4 py-2 rounded-xl bg-emerald-600 text-white text-[11px] font-semibold hover:bg-emerald-700 transition-colors">
                     Generera Investerarrapport
                   </button>
                 </div>
@@ -176,24 +164,22 @@ export default function App() {
                     unit={metric.unit}
                     change={metric.change}
                     icon={metricIcons[key]}
-                    delay={i * 60}
+                    delay={i * 50}
                   />
                 ))}
               </div>
 
               {/* Charts row */}
-              <div className="grid grid-cols-1 xl:grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 xl:grid-cols-2 gap-5">
                 <RevenueChart activeCompany={activeCompany} />
                 <PatientFlowChart />
               </div>
 
               {/* Bottom row */}
-              <div className="grid grid-cols-1 xl:grid-cols-3 gap-6">
+              <div className="grid grid-cols-1 xl:grid-cols-3 gap-5">
                 <BookingsList />
                 <CompanyHealthScores />
-                <div className="space-y-6">
-                  <ActivityFeed />
-                </div>
+                <ActivityFeed />
               </div>
 
               {/* Staff */}

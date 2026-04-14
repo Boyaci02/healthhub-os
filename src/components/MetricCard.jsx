@@ -1,9 +1,10 @@
 import { TrendingUp, TrendingDown } from 'lucide-react'
 
-export default function MetricCard({ label, value, unit, change, icon: Icon, delay = 0, accentColor }) {
+export default function MetricCard({ label, value, unit, change, icon: Icon, delay = 0 }) {
   const isPositive = change >= 0
   const isCurrency = unit === 'kr'
-  
+  const isBurnRate = label === 'Burn Rate / mån'
+
   const formatValue = (val) => {
     if (isCurrency) {
       if (val >= 1000000) return `${(val / 1000000).toFixed(1)}M`
@@ -12,42 +13,42 @@ export default function MetricCard({ label, value, unit, change, icon: Icon, del
     return val.toLocaleString('sv-SE')
   }
 
+  const changePositive = isBurnRate ? change < 0 : isPositive
+
   return (
     <div
-      className="glass rounded-2xl p-5 hover:bg-white/[0.05] transition-all duration-300 group animate-slide-up"
+      className="card card-hover rounded-2xl p-5 animate-slide-up group"
       style={{ animationDelay: `${delay}ms` }}
     >
       <div className="flex items-start justify-between mb-3">
-        <p className="text-[11px] uppercase tracking-wider text-white/30 font-medium">{label}</p>
+        <p className="text-[11px] uppercase tracking-wider text-slate-400 font-medium">{label}</p>
         {Icon && (
-          <div className="p-1.5 rounded-lg bg-white/[0.04] group-hover:bg-white/[0.08] transition-colors">
-            <Icon size={14} className="text-white/30" />
+          <div className="p-1.5 rounded-lg bg-slate-100 group-hover:bg-slate-200 transition-colors">
+            <Icon size={14} className="text-slate-400" />
           </div>
         )}
       </div>
-      <div className="flex items-end gap-2">
-        <span className="text-2xl font-semibold tracking-tight">
+      <div className="flex items-end gap-1.5">
+        <span className="text-2xl font-bold text-slate-800 tracking-tight">
           {formatValue(value)}
         </span>
         {unit && unit !== 'kr' && (
-          <span className="text-sm text-white/30 mb-0.5">{unit}</span>
+          <span className="text-sm text-slate-400 mb-0.5 font-medium">{unit}</span>
         )}
-        {isCurrency && <span className="text-sm text-white/30 mb-0.5">kr</span>}
+        {isCurrency && <span className="text-sm text-slate-400 mb-0.5 font-medium">kr</span>}
       </div>
-      <div className="flex items-center gap-1 mt-2">
-        {isPositive ? (
-          <TrendingUp size={12} className="text-emerald-400" />
-        ) : (
-          <TrendingDown size={12} className="text-coral-400" />
-        )}
-        <span className={`text-[11px] font-medium ${
-          label === 'Burn Rate / mån'
-            ? (change < 0 ? 'text-emerald-400' : 'text-coral-400')
-            : (isPositive ? 'text-emerald-400' : 'text-coral-400')
-        }`}>
-          {Math.abs(change)}%
-        </span>
-        <span className="text-[11px] text-white/20">vs förra mån</span>
+      <div className="flex items-center gap-1 mt-2.5">
+        <div className={`flex items-center gap-1 px-1.5 py-0.5 rounded-md ${changePositive ? 'bg-emerald-50' : 'bg-red-50'}`}>
+          {changePositive ? (
+            <TrendingUp size={11} className="text-emerald-600" />
+          ) : (
+            <TrendingDown size={11} className="text-red-500" />
+          )}
+          <span className={`text-[11px] font-semibold ${changePositive ? 'text-emerald-600' : 'text-red-500'}`}>
+            {Math.abs(change)}%
+          </span>
+        </div>
+        <span className="text-[11px] text-slate-400">vs förra mån</span>
       </div>
     </div>
   )
