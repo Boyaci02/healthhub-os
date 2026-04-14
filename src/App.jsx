@@ -12,6 +12,7 @@ import BookingsList from './components/BookingsList'
 import ActivityFeed from './components/ActivityFeed'
 import CompanyHealthScores from './components/CompanyHealthScores'
 import StaffOverview from './components/StaffOverview'
+import PatientsPage from './components/PatientsPage'
 import { portfolioMetrics, companies } from './data/mockData'
 
 const metricIcons = {
@@ -121,7 +122,9 @@ export default function App() {
 
         {/* Page content */}
         <div className="p-6">
-          {activePage === 'dashboard' ? (
+          {activePage === 'patients' ? (
+            <PatientsPage />
+          ) : activePage === 'dashboard' ? (
             <div className="space-y-6">
               {/* Quick company pills */}
               {activeCompany === 'all' && (

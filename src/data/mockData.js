@@ -131,6 +131,29 @@ export const staffOverview = [
   { name: 'Ssk. Petra Olsson', role: 'Sjuksköterska', companies: ['Doktor Hemma', 'CareFlow'], utilization: 95, patientsToday: 12 },
 ]
 
+export const patientsList = [
+  { id: 1, name: 'Anna Lindström', age: 34, gender: 'F', company: 'Doktor Hemma', status: 'active', careType: 'Videokonsultation', provider: 'Dr. Erik Svensson', lastVisit: '2026-04-10', nextAppointment: '2026-04-18', nps: 9, visits: 12, isNew: false },
+  { id: 2, name: 'Karl Bergman', age: 52, gender: 'M', company: 'CareFlow', status: 'active', careType: 'Uppföljning', provider: 'Dr. Maria Johansson', lastVisit: '2026-04-08', nextAppointment: '2026-04-22', nps: 8, visits: 5, isNew: false },
+  { id: 3, name: 'Sara Nilsson', age: 28, gender: 'F', company: 'MediLink', status: 'pending', careType: 'Nybesök', provider: 'Dr. Johan Andersson', lastVisit: null, nextAppointment: '2026-04-15', nps: null, visits: 0, isNew: true },
+  { id: 4, name: 'Erik Holm', age: 45, gender: 'M', company: 'Doktor Hemma', status: 'active', careType: 'Videokonsultation', provider: 'Dr. Lisa Ekström', lastVisit: '2026-04-09', nextAppointment: '2026-04-21', nps: 10, visits: 8, isNew: false },
+  { id: 5, name: 'Maria Dahl', age: 61, gender: 'F', company: 'MediLink', status: 'active', careType: 'Provresultat', provider: 'Dr. Erik Svensson', lastVisit: '2026-04-07', nextAppointment: '2026-04-28', nps: 7, visits: 15, isNew: false },
+  { id: 6, name: 'Oskar Lund', age: 38, gender: 'M', company: 'CareFlow', status: 'pending', careType: 'Uppföljning', provider: 'Dr. Maria Johansson', lastVisit: '2026-03-28', nextAppointment: '2026-04-16', nps: 8, visits: 3, isNew: false },
+  { id: 7, name: 'Lena Karlsson', age: 42, gender: 'F', company: 'Doktor Hemma', status: 'active', careType: 'Videokonsultation', provider: 'Dr. Erik Svensson', lastVisit: '2026-04-11', nextAppointment: null, nps: 9, visits: 6, isNew: false },
+  { id: 8, name: 'Johan Eriksson', age: 55, gender: 'M', company: 'Doktor Hemma', status: 'inactive', careType: 'Uppföljning', provider: 'Dr. Lisa Ekström', lastVisit: '2026-02-14', nextAppointment: null, nps: 6, visits: 4, isNew: false },
+  { id: 9, name: 'Maja Svensson', age: 23, gender: 'F', company: 'MediLink', status: 'active', careType: 'Nybesök', provider: 'Dr. Johan Andersson', lastVisit: '2026-04-05', nextAppointment: '2026-04-19', nps: 10, visits: 2, isNew: true },
+  { id: 10, name: 'Peter Lindqvist', age: 67, gender: 'M', company: 'Doktor Hemma', status: 'active', careType: 'Kronisk vård', provider: 'Dr. Erik Svensson', lastVisit: '2026-04-12', nextAppointment: '2026-04-26', nps: 8, visits: 22, isNew: false },
+  { id: 11, name: 'Sofia Berg', age: 31, gender: 'F', company: 'CareFlow', status: 'active', careType: 'Patientuppföljning', provider: 'Dr. Maria Johansson', lastVisit: '2026-04-03', nextAppointment: '2026-04-17', nps: 9, visits: 7, isNew: false },
+  { id: 12, name: 'Anders Ström', age: 49, gender: 'M', company: 'Doktor Hemma', status: 'pending', careType: 'Remiss', provider: 'Dr. Lisa Ekström', lastVisit: '2026-04-01', nextAppointment: '2026-04-20', nps: null, visits: 1, isNew: true },
+  { id: 13, name: 'Karin Persson', age: 58, gender: 'F', company: 'MediLink', status: 'active', careType: 'Kronisk vård', provider: 'Dr. Johan Andersson', lastVisit: '2026-04-06', nextAppointment: '2026-05-06', nps: 7, visits: 18, isNew: false },
+  { id: 14, name: 'Mikael Johansson', age: 36, gender: 'M', company: 'Doktor Hemma', status: 'active', careType: 'Videokonsultation', provider: 'Dr. Erik Svensson', lastVisit: '2026-04-11', nextAppointment: '2026-04-25', nps: 10, visits: 9, isNew: false },
+  { id: 15, name: 'Emma Larsson', age: 26, gender: 'F', company: 'CareFlow', status: 'inactive', careType: 'Uppföljning', provider: 'Dr. Maria Johansson', lastVisit: '2026-01-30', nextAppointment: null, nps: 5, visits: 2, isNew: false },
+  { id: 16, name: 'Thomas Olsson', age: 71, gender: 'M', company: 'Doktor Hemma', status: 'active', careType: 'Kronisk vård', provider: 'Dr. Lisa Ekström', lastVisit: '2026-04-10', nextAppointment: '2026-04-24', nps: 9, visits: 31, isNew: false },
+  { id: 17, name: 'Ingrid Magnusson', age: 44, gender: 'F', company: 'MediLink', status: 'pending', careType: 'Nybesök', provider: 'Dr. Johan Andersson', lastVisit: null, nextAppointment: '2026-04-16', nps: null, visits: 0, isNew: true },
+  { id: 18, name: 'Fredrik Gustafsson', age: 39, gender: 'M', company: 'Doktor Hemma', status: 'active', careType: 'Videokonsultation', provider: 'Dr. Erik Svensson', lastVisit: '2026-04-08', nextAppointment: '2026-04-22', nps: 8, visits: 5, isNew: false },
+  { id: 19, name: 'Hanna Björk', age: 33, gender: 'F', company: 'CareFlow', status: 'active', careType: 'Patientuppföljning', provider: 'Dr. Maria Johansson', lastVisit: '2026-04-09', nextAppointment: '2026-04-23', nps: 9, visits: 4, isNew: false },
+  { id: 20, name: 'Lars Petersson', age: 63, gender: 'M', company: 'MediLink', status: 'active', careType: 'Kronisk vård', provider: 'Dr. Erik Svensson', lastVisit: '2026-04-07', nextAppointment: '2026-05-07', nps: 8, visits: 14, isNew: false },
+]
+
 export const companyHealthScores = [
   { company: 'Doktor Hemma', score: 87, trend: 'up', factors: { revenue: 90, patients: 85, margin: 88, satisfaction: 92 } },
   { company: 'MediLink', score: 74, trend: 'up', factors: { revenue: 78, patients: 82, margin: 68, satisfaction: 72 } },
