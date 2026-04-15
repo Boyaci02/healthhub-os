@@ -75,13 +75,13 @@ export default function RevenueChart({ activeCompany }) {
             />
             <Tooltip content={<CustomTooltip />} cursor={{ stroke: '#e2e8f0', strokeWidth: 1 }} />
             {(showAll || activeCompany === 'doktor-hemma') && (
-              <Area type="monotone" dataKey="Doktor Hemma" stroke="#3b82f6" strokeWidth={2} fill="url(#gradDH)" dot={false} />
+              <Area type="monotone" dataKey="Bolag 1" stroke="#3b82f6" strokeWidth={2} fill="url(#gradDH)" dot={false} />
             )}
             {(showAll || activeCompany === 'medilink') && (
-              <Area type="monotone" dataKey="MediLink" stroke="#8b5cf6" strokeWidth={2} fill="url(#gradML)" dot={false} />
+              <Area type="monotone" dataKey="Bolag 2" stroke="#8b5cf6" strokeWidth={2} fill="url(#gradML)" dot={false} />
             )}
             {(showAll || activeCompany === 'careflow') && (
-              <Area type="monotone" dataKey="CareFlow" stroke="#f59e0b" strokeWidth={2} fill="url(#gradCF)" dot={false} />
+              <Area type="monotone" dataKey="Bolag 3" stroke="#f59e0b" strokeWidth={2} fill="url(#gradCF)" dot={false} />
             )}
           </AreaChart>
         </ResponsiveContainer>
@@ -89,9 +89,9 @@ export default function RevenueChart({ activeCompany }) {
       {showAll && (
         <div className="flex items-center gap-4 mt-4 pt-3 border-t border-slate-100">
           {[
-            { label: 'Doktor Hemma', color: '#3b82f6' },
-            { label: 'MediLink', color: '#8b5cf6' },
-            { label: 'CareFlow', color: '#f59e0b' },
+            { label: 'Bolag 1', color: '#3b82f6' },
+            { label: 'Bolag 2', color: '#8b5cf6' },
+            { label: 'Bolag 3', color: '#f59e0b' },
           ].map(item => (
             <div key={item.label} className="flex items-center gap-1.5">
               <div className="w-2.5 h-2.5 rounded-full" style={{ background: item.color }} />

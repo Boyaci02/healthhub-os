@@ -7,9 +7,9 @@ import {
 import { patientsList, companies } from '../data/mockData'
 
 const companyColors = {
-  'Doktor Hemma': '#3b82f6',
-  'MediLink': '#8b5cf6',
-  'CareFlow': '#f59e0b',
+  'Bolag 1': '#3b82f6',
+  'Bolag 2': '#8b5cf6',
+  'Bolag 3': '#f59e0b',
 }
 
 const statusConfig = {
